@@ -111,9 +111,7 @@
 </head>
 <body>
 
-<div class="nav">
-  <div class="nav-title">Isaiah</div>
-  <select id="chapterSelect">
+<div class="nav"><button onclick="navigate(-1)">&#8592;</button><select id="chapterSelect">
     <option value="0">Introduction</option>
     <option value="1">Ch 1</option>
     <option value="2">Ch 2</option>
@@ -182,6 +180,7 @@
     <option value="65">Ch 65</option>
     <option value="66">Ch 66</option>
   </select>
+  <button onclick="navigate(1)">&#8594;</button>
 </div>
 
 <div id="content"></div>
@@ -1904,6 +1903,12 @@ function loadChapter(num) {
   if (next && nextNum) next.addEventListener("click", function() { loadChapter(nextNum); });
 }
 
+function navigate(dir){
+  var keys=Object.keys(CHAPTERS).map(Number).sort(function(a,b){return a-b;});
+  var idx=keys.indexOf(currentChapter);
+  var ni=idx+dir;
+  if(ni>=0&&ni<keys.length) loadChapter(keys[ni]);
+}
 document.getElementById("chapterSelect").addEventListener("change", function() {
   loadChapter(+this.value);
 });

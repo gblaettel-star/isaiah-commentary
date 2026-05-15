@@ -1,4 +1,4 @@
-const CACHE = 'isaiah-v3';
+const CACHE = 'isaiah-v4';
 const ASSETS = ['./', './index.html'];
 
 self.addEventListener('install', e => {
